@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet, Alert, Image, TouchableOpacity, Text } from 'react-native';
-//import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
-//import { auth, db, storage } from '../../firebaseConfig';
-//import { doc, setDoc } from 'firebase/firestore';
-//import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
+import { auth, db, storage } from '../../firebaseConfig.js';
+import { doc, setDoc } from 'firebase/firestore';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import * as ImagePicker from 'react-native-image-picker';
 import styles from '../styles/globalStyles';
 
@@ -22,7 +22,7 @@ const RegisterScreen = ({ navigation }) => {
     if (!name || !number) return Alert.alert('Todos los campos son obligatorios');
     return true;
   };
-
+              
   const pickImage = () => {
     ImagePicker.launchImageLibrary({ mediaType: 'photo' }, response => {
       if (!response.didCancel && !response.errorCode && response.assets.length > 0) {
@@ -65,20 +65,20 @@ const RegisterScreen = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
-      <TouchableOpacity style={styles.imageContainer} onPress={pickImage}>
+    <View style={styles.containerRegister}>
+      <TouchableOpacity style={styles.imageContainerRegister} onPress={pickImage}>
         {image ? (
           <Image source={{ uri: image.uri }} style={styles.image} />
         ) : (
-          <Text style={styles.imagePlaceholder}>📷</Text>
+          <Text style={styles.imagePlaceholderRegister}>📷</Text>
         )}
       </TouchableOpacity>
 
-      <TextInput placeholder="Nombre completo" onChangeText={setName} value={name} style={styles.input} />
-      <TextInput placeholder="Número" onChangeText={setNumber} value={number} keyboardType="phone-pad" style={styles.input} />
-      <TextInput placeholder="Email" onChangeText={setEmail} value={email} keyboardType="email-address" style={styles.input} />
-      <TextInput placeholder="Contraseña" secureTextEntry onChangeText={setPassword} value={password} style={styles.input} />
-      <TextInput placeholder="Confirmar contraseña" secureTextEntry onChangeText={setConfirmPass} value={confirmPass} style={styles.input} />
+      <TextInput placeholder="Nombre completo" onChangeText={setName} value={name} style={styles.inputRegister} />
+      <TextInput placeholder="Número" onChangeText={setNumber} value={number} keyboardType="phone-pad" style={styles.inputRegister} />
+      <TextInput placeholder="Email" onChangeText={setEmail} value={email} keyboardType="email-address" style={styles.inputRegister} />
+      <TextInput placeholder="Contraseña" secureTextEntry onChangeText={setPassword} value={password} style={styles.inputRegister} />
+      <TextInput placeholder="Confirmar contraseña" secureTextEntry onChangeText={setConfirmPass} value={confirmPass} style={styles.inputRegister} />
       <Button title="Done" onPress={register} />
       <Button title="Cancel" onPress={() => navigation.navigate('Welcome')} />
     </View>

@@ -1,10 +1,11 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
+import AntDesign from '@expo/vector-icons/AntDesign';
 import styles from "../styles/globalStyles";
 
 export default function Bienvenida({ navigation }) {
   return (
-    <View style={styles.container}>
+    <View style={styles.containerContent}>
       <Image source={require('../assets/logo.png')} style={styles.logo} />
 
       <Text style={styles.title}>ShoppingGo</Text>
@@ -16,7 +17,7 @@ export default function Bienvenida({ navigation }) {
 
       <TouchableOpacity style={styles.loginRow} onPress={() => navigation.navigate('Register')}>
         <Text style={styles.loginText}>Registrar una cuenta</Text>
-        <Text style={styles.arrow}>➔</Text>
+        <AntDesign style={styles.welcomeIcon} name="rightcircle" size={16} color="#004CFF" />
       </TouchableOpacity>
     </View>
   );

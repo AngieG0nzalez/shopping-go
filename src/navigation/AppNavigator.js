@@ -7,6 +7,7 @@ import Bienvenida from '../screens/Bienvenida';
 import RegisterScreen from '../screens/RegisterScreen';
 import LoginScreen from '../screens/LoginScreen';
 import HomeScreen from '../screens/HomeScreen';
+import LayoutScreen from '../screens/LayoutScreen';
 
 const Stack = createStackNavigator();
 
@@ -19,6 +20,7 @@ export default class AppNavigator extends React.Component {
           <Stack.Screen name="Register" component={RegisterScreen} />
           <Stack.Screen name="Login" component={LoginScreen} />
           <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Layout" component={LayoutScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     );
