@@ -6,6 +6,7 @@ import {
   ScrollView,
   Dimensions,
   Button,
+  StyleSheet,
 } from "react-native";
 import ButtonMenu from "../components/ButtonMenu.js";
 import styles from "../styles/globalStyles";
@@ -34,7 +35,6 @@ const HomeScreen = ({ navigation }) => {
       title: "Looks Exclusivos, Solo Online",
       description:
         "Encuentra colecciones únicas y ofertas especiales que no verás en otro lugar. ¡Renueva tu armario con prendas originales y a la moda!",
-
     },
     {
       id: "3",
@@ -55,6 +55,7 @@ const HomeScreen = ({ navigation }) => {
       navigateTo: "Layout", // Reemplaza con tu URL de Instagram
     },
   ];
+
   const handleScroll = (event) => {
     const contentOffset = event.nativeEvent.contentOffset.x;
     const slideIndex = Math.round(contentOffset / CARD_WIDTH);
@@ -79,13 +80,8 @@ const HomeScreen = ({ navigation }) => {
   }, [currentSlide, numSlides]);
 
   const handleButtonPress = (navigateTo) => {
-    // if (navigation && navigateTo) {
-       navigation.navigate(navigateTo);
-    // } else {
-      console.log("Navigation: ", navigateTo);
-    // }
+    navigation.navigate(navigateTo);
   };
-  
 
   return (
     <View style={styles.homeContainer}>
@@ -138,9 +134,25 @@ const HomeScreen = ({ navigation }) => {
           />
         ))}
       </View>
-      <ButtonMenu navigation={navigation} />
+      {/* Botón de navegación fijo */}
+      <View style={localStyles.fixedBottomMenu}>
+        <ButtonMenu navigation={navigation} />
+      </View>
     </View>
   );
 };
+
+const localStyles = StyleSheet.create({
+  fixedBottomMenu: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: "#ADD8E6", // Fondo azul claro
+    paddingVertical: 10,
+    borderTopWidth: 1,
+    borderTopColor: "#ccc",
+  },
+});
 
 export default HomeScreen;

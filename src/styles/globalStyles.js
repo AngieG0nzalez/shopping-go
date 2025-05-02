@@ -5,6 +5,40 @@ const imageHeight = screenHeight * 0.35; // Ajusta la altura de la imagen según
 
 
 export default StyleSheet.create({
+
+  containerShop: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  headerShop: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 20,
+    backgroundColor: 'white',
+    elevation: 3, // Sombra en Android
+    shadowColor: '#000', // Sombra en iOS
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+  },
+  shopTitleShop: {
+    fontSize: 24,
+    fontWeight: 'bold',
+  },
+  searchInputShop: {
+    
+    padding: 12, // Aumenta el padding vertical
+    paddingHorizontal: 20, // Aumenta el padding horizontal
+    borderWidth: 1,
+    borderColor: '#ddd',
+    borderRadius: 25, // Más redondeado
+    width: '80%', // Ocupa más espacio (ajusta según necesidad)
+    height: 40, // Altura explícita
+    fontSize: 18, // Texto más grande
+  },
+  
   container: {
     flex: 1,
     backgroundColor: '#fff',
