@@ -1,27 +1,34 @@
-AuthContext.js
 import React, { createContext, useState, useEffect } from 'react';
-import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from '../../firebaseConfig'; // ✅ CORRECTO
-
+import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { auth } from '../api/firebaseConfig';
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true); // opcional para mostrar splash o loader
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user);
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      setUser(firebaseUser);
       setLoading(false);
     });
 
-    return () => unsubscribe(); // limpiar el listener al desmontar
- }, []);
+    return unsubscribe;
+  }, []);
+
+  const logout = async () => {
+    try {
+      await signOut(auth);
+      setUser(null); // opcional, ya lo hace onAuthStateChanged
+    } catch (error) {
+      console.error("Error al cerrar sesión:", error);
+    }
+  };
 
   return (
-    <AuthContext.Provider value={{ user, setUser }}>
-      {!loading && children}
-    //</AuthContext.Provider>
+    <AuthContext.Provider value={{ user, setUser, loading, logout }}>
+      {children}
+    </AuthContext.Provider>
   );
 };

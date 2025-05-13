@@ -263,7 +263,7 @@ export default StyleSheet.create({
     marginTop: 16,
   },
   productCardLayout: {
-    width: '45%',
+    width: '100%',
     marginBottom: 16,
     backgroundColor: '#fafafa',
     borderRadius: 12,

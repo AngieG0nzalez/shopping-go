@@ -6,7 +6,7 @@ import styles from "../styles/globalStyles";
 export default function Bienvenida({ navigation }) {
   return (
     <View style={styles.containerContent}>
-      <Image source={require('../assets/logo.png')} style={styles.logo} />
+      <Image source={require('../assets/img/logo.png')} style={styles.logo} />
 
       <Text style={styles.title}>ShoppingGo</Text>
       <Text style={styles.subtitle}>Tu experiencia de compra comienza aquí. ¡Explora y encuentra lo que necesitas!</Text>
