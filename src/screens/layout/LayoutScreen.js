@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
   ActivityIndicator
 } from 'react-native';
+import DrawerLayout from 'react-native-drawer-layout';
 import styles from '../../styles/globalStyles.js';
 import api from '../../api/serviceApi.js'; // Asegúrate de tener este archivo configurado
 import { useNavigation } from '@react-navigation/native'; // Importamos la navegación

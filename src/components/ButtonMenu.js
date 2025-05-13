@@ -13,9 +13,18 @@ const BottomMenu = ({ navigation }) => {
         <FontAwesome5 name="home" size={24} color="black" />
       </TouchableOpacity>
 
+      <TouchableOpacity onPress={() => navigation.navigate("Activity")}>
+        <FontAwesome5 name="chart-bar" size={24} color="black" />
+      </TouchableOpacity>
+      
+      <TouchableOpacity onPress={() => navigation.navigate("Payment")}>
+        <FontAwesome5 name="shopping-cart" size={24} color="black" />
+      </TouchableOpacity>
+
       <TouchableOpacity onPress={logout}>
         <FontAwesome5 name="sign-out-alt" size={24} color="black" />
       </TouchableOpacity>
+
     </View>
   );
 };

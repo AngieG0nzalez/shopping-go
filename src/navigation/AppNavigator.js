@@ -1,17 +1,19 @@
 // src/navigation/AppNavigator.js
-import React, { useContext } from 'react';
-import { View, ActivityIndicator, StyleSheet } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import React, { useContext } from "react";
+import { View, ActivityIndicator, StyleSheet } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 
-import Bienvenida from '../screens/Bienvenida';
-import RegisterScreen from '../screens/auth/RegisterScreen';
-import LoginScreen from '../screens/auth/LoginScreen';
-import HomeScreen from '../screens/home/HomeScreen';
+import Bienvenida from "../screens/Bienvenida";
+import RegisterScreen from "../screens/auth/RegisterScreen";
+import LoginScreen from "../screens/auth/LoginScreen";
+import HomeScreen from "../screens/home/HomeScreen";
 import LayoutScreen from '../screens/layout/LayoutScreen';
-import UnderConstructionScreen from '../screens/UnderConstructionScreen';
+import ActivityScreen from '../screens/layout/ActivityScreen';
+import PaymentScreen from "../screens/layout/PaymentScreen";
+import UnderConstructionScreen from "../screens/UnderConstructionScreen";
 
-import { AuthContext } from '../context/AuthContext';
+import { AuthContext } from "../context/AuthContext";
 
 const Stack = createStackNavigator();
 
@@ -33,7 +35,10 @@ const AppNavigator = () => {
           <>
             <Stack.Screen name="Home" component={HomeScreen} />
             <Stack.Screen name="Layout" component={LayoutScreen} />
-              <Stack.Screen name="UnderConstruction" component={UnderConstructionScreen} />
+            <Stack.Screen name="Activity" component={ActivityScreen} />
+            <Stack.Screen name="Payment" component={PaymentScreen} />
+            <Stack.Screen name="UnderConstruction" component={UnderConstructionScreen}
+            />
           </>
         ) : (
           <>
@@ -50,9 +55,9 @@ const AppNavigator = () => {
 const styles = StyleSheet.create({
   loadingContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#fff",
   },
 });
 
