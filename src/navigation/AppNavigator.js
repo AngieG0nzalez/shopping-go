@@ -8,8 +8,9 @@ import Bienvenida from "../screens/Bienvenida";
 import RegisterScreen from "../screens/auth/RegisterScreen";
 import LoginScreen from "../screens/auth/LoginScreen";
 import HomeScreen from "../screens/home/HomeScreen";
-import LayoutScreen from '../screens/layout/LayoutScreen';
-import ActivityScreen from '../screens/layout/ActivityScreen';
+import LayoutScreen from "../screens/layout/LayoutScreen";
+import ActivityScreen from "../screens/layout/ActivityScreen";
+import AddProductScreen from "../screens/layout/AddProductScreen";
 import PaymentScreen from "../screens/layout/PaymentScreen";
 import UnderConstructionScreen from "../screens/UnderConstructionScreen";
 
@@ -37,7 +38,14 @@ const AppNavigator = () => {
             <Stack.Screen name="Layout" component={LayoutScreen} />
             <Stack.Screen name="Activity" component={ActivityScreen} />
             <Stack.Screen name="Payment" component={PaymentScreen} />
-            <Stack.Screen name="UnderConstruction" component={UnderConstructionScreen}
+            <Stack.Screen
+              name="AddProduct"
+              component={AddProductScreen}
+              options={{ title: "Nueva Prenda" }}
+            />
+            <Stack.Screen
+              name="UnderConstruction"
+              component={UnderConstructionScreen}
             />
           </>
         ) : (

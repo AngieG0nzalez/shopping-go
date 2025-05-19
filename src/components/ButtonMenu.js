@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { View, TouchableOpacity } from "react-native";
+import { View, TouchableOpacity, Text } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
 import globalStyles from "../styles/globalStyles";
 import { AuthContext } from "../context/AuthContext";
@@ -9,22 +9,25 @@ const BottomMenu = ({ navigation }) => {
 
   return (
     <View style={globalStyles.bottomMenu}>
-      <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-        <FontAwesome5 name="home" size={24} color="black" />
+      <TouchableOpacity onPress={() => navigation.navigate("AddProduct")}>
+        <FontAwesome5 name="user" size={24} color="white" />
       </TouchableOpacity>
 
       <TouchableOpacity onPress={() => navigation.navigate("Activity")}>
-        <FontAwesome5 name="chart-bar" size={24} color="black" />
+        <FontAwesome5 name="chart-bar" size={24} color="white" />
       </TouchableOpacity>
-      
+
+      <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+        <FontAwesome5 name="home" size={24} color="white" />
+      </TouchableOpacity>
+
       <TouchableOpacity onPress={() => navigation.navigate("Payment")}>
-        <FontAwesome5 name="shopping-cart" size={24} color="black" />
+        <FontAwesome5 name="shopping-cart" size={24} color="white" />
       </TouchableOpacity>
 
       <TouchableOpacity onPress={logout}>
-        <FontAwesome5 name="sign-out-alt" size={24} color="black" />
+        <FontAwesome5 name="sign-out-alt" size={24} color="white" />
       </TouchableOpacity>
-
     </View>
   );
 };
