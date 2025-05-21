@@ -1,5 +1,11 @@
 import React from "react";
-import { View, Text, StyleSheet, Dimensions, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Dimensions,
+  TouchableOpacity,
+} from "react-native";
 import { Avatar } from "react-native-elements";
 import { ProgressChart } from "react-native-chart-kit";
 import ButtonMenu from "../../components/ButtonMenu.js";
@@ -11,14 +17,17 @@ const hexToRgb = (hex) => {
   const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
   hex = hex.replace(shorthandRegex, (m, r, g, b) => r + r + g + g + b + b);
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  return result ? {
-    r: parseInt(result[1], 16),
-    g: parseInt(result[2], 16),
-    b: parseInt(result[3], 16)
-  } : null;
+  return result
+    ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16),
+      }
+    : null;
 };
 
-const ActivityScreen = ({ navigation }) => { // Revise que el ActivityScreen si sea el nombre de la funcion y este bien escrito
+const ActivityScreen = ({ navigation }) => {
+  // Revise que el ActivityScreen si sea el nombre de la funcion y este bien escrito
   // Datos de ejemplo
   const chartData = {
     labels: ["Clothing", "Lingerie", "Shoes", "Bags"], // Etiquetas
@@ -68,7 +77,9 @@ const ActivityScreen = ({ navigation }) => { // Revise que el ActivityScreen si 
 
           // Nueva funcion para colocar el color por cada barra del gráfico dependiendo de su categoria
           color: (opacity = 1, index = 0) => {
-            const baseColor = categories[index] ? categories[index].color : '#000000'; // Obtener un color hex
+            const baseColor = categories[index]
+              ? categories[index].color
+              : "#000000"; // Obtener un color hex
             const rgb = hexToRgb(baseColor); // Convierte a RGB
 
             if (rgb) {
@@ -81,8 +92,8 @@ const ActivityScreen = ({ navigation }) => { // Revise que el ActivityScreen si 
             }
           },
           propsForBackgroundLines: {
-            strokeDasharray: '',
-            stroke: '#eee',
+            strokeDasharray: "",
+            stroke: "#eee",
           },
         }}
         hideLegend={true}
@@ -95,7 +106,10 @@ const ActivityScreen = ({ navigation }) => { // Revise que el ActivityScreen si 
         {categories.map((category, index) => (
           <View key={index} style={styles.category}>
             <View
-              style={[styles.categoryColor, { backgroundColor: category.color }]}
+              style={[
+                styles.categoryColor,
+                { backgroundColor: category.color },
+              ]}
             />
             <Text style={styles.categoryLabel}>{category.label}</Text>
             <Text style={styles.categoryValue}>{category.value}</Text>
@@ -114,7 +128,12 @@ const ActivityScreen = ({ navigation }) => { // Revise que el ActivityScreen si 
       </View>
 
       {/* Botón de historial */}
-      <TouchableOpacity style={styles.orderHistoryButton}>
+      <TouchableOpacity
+        style={styles.orderHistoryButton}
+        onPress={() => {
+          navigation.navigate("UnderConstruction");
+        }}
+      >
         <Text style={styles.orderHistoryButtonText}>Order History</Text>
       </TouchableOpacity>
 

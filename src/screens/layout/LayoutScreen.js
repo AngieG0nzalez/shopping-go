@@ -10,13 +10,14 @@ import {
   TouchableOpacity,
   ActivityIndicator,
 } from "react-native";
+import ButtonMenu from "../../components/ButtonMenu.js";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { Button } from "@react-navigation/elements";
 import styles from "../../styles/globalStyles.js";
 import api from "../../api/serviceApi.js"; // Asegúrate de tener este archivo configurado
 import { useNavigation } from "@react-navigation/native"; // Importamos la navegación
 
-const LayoutScreen = () => {
+const LayoutScreen = ({navigate}) => {
   const [categories, setCategories] = useState([]);
   const [topProducts, setTopProducts] = useState([]);
   const [newItems, setNewItems] = useState([]);
@@ -280,6 +281,7 @@ const LayoutScreen = () => {
           </Text>
         ) : null}
       </View>
+      <ButtonMenu navigation={navigation} />
     </ScrollView>
   );
 };

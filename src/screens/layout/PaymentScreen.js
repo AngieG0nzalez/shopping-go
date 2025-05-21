@@ -8,7 +8,7 @@ import {
   Image,
   Modal,
 } from "react-native";
-import { Picker } from '@react-native-picker/picker';
+import { Picker } from "@react-native-picker/picker";
 import { FontAwesome5 } from "@expo/vector-icons";
 import ButtonMenu from "../../components/ButtonMenu.js";
 
@@ -21,13 +21,13 @@ const PaymentScreen = ({ navigation }) => {
     {
       id: "1",
       name: "Red Dress",
-      price: 15.000,
+      price: 15.0,
       image: "https://via.placeholder.com/50/FF0000/FFFFFF?text=Dress",
     },
     {
       id: "2",
       name: "Blue Shirt",
-      price: 14.000,
+      price: 14.0,
       image: "https://via.placeholder.com/50/0000FF/FFFFFF?text=Shirt",
     },
   ];
@@ -55,7 +55,7 @@ const PaymentScreen = ({ navigation }) => {
     setTimeout(() => {
       setShowModal(false);
       navigation.navigate("Home"); // Cambia "Home" por el nombre de tu pantalla principal
-    }, 4000);
+    }, 2000);
   };
 
   return (
@@ -79,7 +79,11 @@ const PaymentScreen = ({ navigation }) => {
           <Text style={styles.text}>
             El danubio, Calle 123, Bogotá, Colombia
           </Text>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("UnderConstruction");
+            }}
+          >
             <FontAwesome5 name="edit" size={18} color="#4285F4" />
           </TouchableOpacity>
         </View>
@@ -90,7 +94,11 @@ const PaymentScreen = ({ navigation }) => {
         <Text style={styles.sectionTitle}>Imformacion de contacto</Text>
         <View style={styles.row}>
           <Text style={styles.text}>+573237654321</Text>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("UnderConstruction");
+            }}
+          >
             <FontAwesome5 name="edit" size={18} color="#4285F4" />
           </TouchableOpacity>
         </View>
@@ -142,7 +150,10 @@ const PaymentScreen = ({ navigation }) => {
           style={styles.picker}
           onValueChange={(itemValue) => setPaymentMethod(itemValue)}
         >
-          <Picker.Item label="TARJETA DÉBITO/CRÉDITO" value="TARJETA DÉBITO/CRÉDITO" />
+          <Picker.Item
+            label="TARJETA DÉBITO/CRÉDITO"
+            value="TARJETA DÉBITO/CRÉDITO"
+          />
           <Picker.Item label="EFECTIVO" value="EFECTIVO" />
           <Picker.Item label="TRANSACCIÓN" value="TRANSACCIÓN" />
         </Picker>

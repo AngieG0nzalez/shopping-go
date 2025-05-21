@@ -9,9 +9,10 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
+import ButtonMenu from "../../components/ButtonMenu.js";
 import * as ImagePicker from "expo-image-picker";
 
-const AddProductScreen = () => {
+const AddProductScreen = ({navigation}) => {
   const [image, setImage] = useState(null);
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
@@ -58,6 +59,7 @@ const AddProductScreen = () => {
       image,
     };
     console.log("Producto agregado:", newProduct);
+    navigation.navigate('UnderConstruction');
     // Aquí podrías enviarlo a Firebase, Supabase, tu backend, etc.
   };
 
@@ -99,6 +101,7 @@ const AddProductScreen = () => {
       />
 
       <Button title="Publicar Prenda" onPress={handleSubmit} />
+      <ButtonMenu navigation={navigation} />
     </ScrollView>
   );
 };
